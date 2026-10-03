@@ -1,0 +1,25 @@
+[project]
+name = "lab-streaming-sources"
+version = "0.1.0"
+description = "Fruit Juice sales event generator and Postgres CDC source for lab-streaming-oss"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "psycopg[binary]>=3.1"]
+
+[project.scripts]
+generator = "generator.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+generator = ["data/*.json", "data/*.toml", "data/*.sql", "data/dims/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

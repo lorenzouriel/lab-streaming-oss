@@ -1,0 +1,19 @@
+# Fruit Juice event generator. Same seed => same event N content.
+dataset = "fruit_juice"
+seed = 42
+
+# After the last fitted year (2015) the model extends itself year by year with these seeded steps.
+[volume]
+terminal_growth = 0.03
+growth_decay    = 0.6        # g[y+1] = terminal + (g[y] - terminal) * growth_decay
+shock_sigma     = 0.02       # yearly demand shock (log scale)
+
+[prices]
+inflation      = 0.05        # mean yearly list-price step
+price_sigma    = 0.03        # spread of that step across products
+cost_inflation = 0.05        # mean yearly step of the variable cost per litre
+cost_sigma     = 0.04
+cost_cap_ratio = 0.75        # unit cost never exceeds this share of the list price
+tax_drift      = 0.02
+tax_sigma      = 0.01
+tax_cap        = 0.22
